@@ -1,0 +1,29 @@
+@* Nombre del archivo modificado: de Generate a Generator *@
+
+@{
+    ViewData["Title"] = "Generator";
+}
+
+<div class="text-center">
+    
+    @* Modificado la forma del llamado, de @Context.Session.GetString() a @ViewData[] y corregida la palabra Location*@
+    @* tambien se eliminó la palabra from, esto ahora vendra solo si Location fue designada *@
+    <h2>Welcome, @ViewData["Username"] @ViewData["Location"]</h2> 
+    
+    <h2>Here is your randomly generated passcode:</h2>
+    
+    <h1 class="passcode">@Context.Session.GetString("Passcode")</h1>
+    
+    <div class="d-flex mx-auto w-25 justify-content-center">
+        <form action="logout" method="post"> @* modificada la accion reset a logout y agregado metodo post *@
+            <label>Not you?</label>
+            <input type="submit" value="Log out" class="btn btn-danger">
+        </form>
+        <form action="generate/new" method="post">
+            <label>Want a new code?</label>
+            <input type="submit" value="New code" class="btn btn-info">
+        </form>
+    </div>
+
+
+</div>
